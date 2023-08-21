@@ -1,0 +1,16 @@
+.python-main {
+    max-width: 100%;
+    min-height: 100vh;
+    text-align: center;
+}
+
+.python-main h2 {
+    position: relative;
+    margin: 15px;
+}
+
+@media screen and (min-width: 0px) and (max-width: 768px) {
+    .python-main {
+        max-width: 100vw
+    }
+}

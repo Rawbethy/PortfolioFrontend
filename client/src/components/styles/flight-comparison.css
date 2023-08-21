@@ -1,0 +1,16 @@
+.flight-main {
+    max-width: 100%;
+    min-height: 100vh;
+    text-align: center;
+}
+
+.flight-main h2 {
+    position: relative;
+    margin: 15px;
+}
+
+@media screen and (min-width: 0px) and (max-width: 768px) {
+    .flight-main {
+        max-width: 100vw;
+    }
+}

@@ -1,0 +1,106 @@
+.about-title, .about-hobbies, .sub-title2 {
+    position: relative;
+    text-align: left;
+    margin: 0px 20px 0px 20px;
+    color: white;
+}
+
+.sub-title2 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.about-who, .about-tech, .hobbies{
+    margin: 35px 0px 35px 0px;
+    text-align: center;
+}
+
+.desc {
+    margin: auto;
+    position: relative;
+    width: 80%;
+    max-width: 1000px;
+}
+
+.tech-icons {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.icon {
+    width: 15%;
+}
+
+.icon h4 {
+    font-size: 1.5vw;
+}
+
+.row1, .row2, .row3{
+    display: flex;
+    width: 85%;
+    margin: 20px auto 20px auto;
+    justify-content:space-between;
+}
+
+.tech-icons i {
+    color: white;
+    display: inline-block;
+    height: 70%;
+    width: 100%;
+    font-size: 50px;
+}
+
+.tech-title {
+    padding: 25px 0 0 0;
+    width: 20%;
+    margin: auto;
+}
+
+.ic1 {
+    transition: all 4s;
+}
+
+.hobbies {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: auto;
+    color: white;
+}
+
+.imageSlider {
+    width: 100%;
+}
+
+@media screen and (min-width: 1600px) {
+    .icon h4 {
+        font-size: 20px;
+    }
+}
+
+@media screen and (min-width: 0px) and (max-width: 768px) {
+    .about-hobbies, .about-title, .about-tech, .about-who, .desc {
+        width: 80vw;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .about h1 {
+        font-size: 25px;
+    }
+
+    .tech-icons i {
+        font-size: 30px;
+    }
+
+    .tech-title {
+        width: 100%;
+    }
+
+    .icon h4 {
+        font-size: 8px;
+        
+    }
+}

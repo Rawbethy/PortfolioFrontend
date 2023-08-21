@@ -1,0 +1,115 @@
+.earthquake-main {
+    position: relative;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 50px;
+    top: 0px;
+    min-height: 100vh;
+    height: auto;
+    width: 100%;
+}
+
+.container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    top: 0px;
+}
+
+
+.title-eq {
+    position: relative;
+    text-align: center;
+    margin: 10px;
+}
+
+.desc-projects {
+    text-align: center;
+    width: 80%;
+    min-width: 800px;
+}
+
+.desc-projects p {
+    padding: 10px;
+}
+
+.apiContainer {
+    position: relative;
+    min-height: 400px;
+    min-width: 800px;
+    height: auto;
+    width: auto;
+    text-align: center;
+}
+
+.apiContainer h1, h3, h5 {
+    padding: 10px;
+}
+
+.apiButton button {
+    margin: 15px;
+    cursor: pointer;
+}
+
+.location {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.location input {
+    width: 150px;
+}
+
+.locLongitude, .locLatitude {
+    padding: 15px;
+}
+
+.heatmap {
+    display: flex;
+    justify-content: center;
+    width: 80vw;
+    margin: auto;
+    height: auto;
+}
+
+.heatmap img {
+    width: 100%;
+}
+
+.warning-message {
+    color: red;
+    margin-top: 25px;
+    text-align: center;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    color: white;
+    margin: 0
+}
+
+@media screen and (min-width: 0px) and (max-width: 768px) {
+    .earthquake-main {
+        width: 100vw;
+    }
+
+    .desc-projects p {
+        width: 80vw;
+        text-align: left;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .apiContainer {
+        max-width: 100vw;
+    }
+
+    h1 {
+        font-size: 25px;
+        white-space: pre-wrap;
+    }
+}
