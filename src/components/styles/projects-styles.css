@@ -40,15 +40,15 @@
     margin: auto;  
     width: 55%;
     height: 70%;
-    max-width: 450px;
-    min-width: 350px;
+    max-width: 700px;
+    min-width: 400px;
     transition: all .5s;
 }
 
 .projects-card:hover {
     cursor: pointer;
-    height: 72%;
-    width: 58%;
+    width: 63%;
+    height: 73%;
     transition: all .5s;
 }
 
@@ -105,14 +105,13 @@
     }
 
     .projects-card {
-        width: 80%;
+        width: 90%;
         height: 60%;
-        max-width: 175px;
         min-width: 100px;
     }
 
     .projects-card:hover {
-        width: 83%;
+        width: 93%;
         height: 63%;
     }
 
