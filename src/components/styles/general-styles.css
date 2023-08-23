@@ -99,9 +99,8 @@ p {
 }
 
 .animate-after-sub {
-    width: 100%;
     opacity: 1;
-    transform: translateX(10px);
+    transform: translateX(0px);
     transition: all 1s;
 }
 

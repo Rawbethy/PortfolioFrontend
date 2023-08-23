@@ -40,7 +40,7 @@
     margin: auto;  
     width: 55%;
     height: 70%;
-    max-width: 700px;
+    max-width: 475px;
     min-width: 400px;
     transition: all .5s;
 }
@@ -98,7 +98,7 @@
     height: 500px;
 }
 
-@media screen and (min-width: 0px) and (max-width: 768px) {
+@media screen  and (max-width: 768px) {
 
     .projects h1 {
         font-size: 25px;
@@ -108,6 +108,7 @@
         width: 90%;
         height: 60%;
         min-width: 100px;
+        max-width: 170px;
     }
 
     .projects-card:hover {

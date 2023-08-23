@@ -22,6 +22,12 @@
     max-width: 1000px;
 }
 
+.about-tech-title {
+    text-align: left;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
 .tech-icons {
     position: relative;
     display: flex;
@@ -43,6 +49,43 @@
     justify-content:space-between;
 }
 
+.animate-before-tech .ic0 {
+    opacity: 0;
+    transform: translateX(-100%);
+}
+
+.animate-before-tech .ic1 {
+    opacity: 0;
+    transform: translateX(-200%);
+}
+
+.animate-before-tech .ic2 {
+    opacity: 0;
+    transform: translateX(-300%);
+}
+
+.animate-before-tech .ic3 {
+    opacity: 0;
+    transform: translateX(-400%);
+}
+
+.animate-after-tech .ic0, .animate-after-tech .ic1, .animate-after-tech .ic2, .animate-after-tech .ic3 {
+    opacity: 1;
+    transform: translateX(0px);
+    transition: all 1.5s;
+}
+
+.animate-before-tech-title {
+    opacity: 0;
+    transform : translateX(-250%);
+}
+
+.animate-after-tech-title {
+    opacity: 1;
+    transform : translateX(0px);
+    transition: all 1.5s;
+}
+
 .tech-icons i {
     color: white;
     display: inline-block;
@@ -55,10 +98,6 @@
     padding: 25px 0 0 0;
     width: 20%;
     margin: auto;
-}
-
-.ic1 {
-    transition: all 4s;
 }
 
 .hobbies {
@@ -102,5 +141,9 @@
     .icon h4 {
         font-size: 8px;
         
+    }
+
+    .animate-before-tech-title {
+        transform : translateX(-50%);
     }
 }

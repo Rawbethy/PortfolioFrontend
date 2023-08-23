@@ -18,7 +18,7 @@ export default function Body() {
   const about_title_ref = useRef(null)
   const about_who_ref = useRef(null)
   const about_hobbies_ref = useRef(null)
-  const about_tech_ref = useRef(null)
+  const about_tech_title_ref = useRef(null)
   const languages_ref = useRef(null)
   const frameworks_ref = useRef(null)
   const softwares_ref = useRef(null)
@@ -38,7 +38,7 @@ export default function Body() {
     about_title_visible: false,
     about_who_visible: false,
     about_hobbies_visible: false,
-    about_tech_visible: false,
+    about_tech_title_visible: false,
     languages_visible: false,
     frameworks_visible: false,
     softwares_visible: false,
@@ -53,7 +53,7 @@ export default function Body() {
     'about-title': [about_title_ref, 'about_title_visible'],
     'about-who': [about_who_ref, 'about_who_visible'],
     'about-hobbies': [about_hobbies_ref, 'about_hobbies_visible'],
-    'about-tech': [about_tech_ref, 'about_tech_visible'],
+    'about-tech-title': [about_tech_title_ref, 'about_tech_title_visible'],
     'languages' : [languages_ref, 'languages_visible'],
     'frameworks' : [frameworks_ref, 'frameworks_visible'],
     'softwares' : [softwares_ref, 'softwares_visible'],
@@ -188,85 +188,85 @@ export default function Body() {
             <p className={visible.about_who_visible ? 'animate-after' : 'animate-before'}>{Desc.AboutMe.Who}</p>
           </div>
         </div>
-        <div className="about-tech" ref={about_tech_ref}>
-          <div className="sub-title2">
-            <h3 className={visible.about_tech_visible ? 'animate-after-sub' : 'animate-before'}>Technologies</h3>
+        <div className="about-tech">
+          <div className="about-tech-title" ref={about_tech_title_ref}>
+            <h3 className={visible.about_tech_title_visible ? 'animate-after-sub' : 'animate-before'}>Technologies</h3>
           </div>
           <div className="tech-icons">
             <div className="tech-title">
-              <h3 className={visible.languages_visible ? 'animate-after' : 'animate-before'}>Languages</h3>
+              <h3 className={visible.languages_visible ? 'animate-after-tech-title' : 'animate-before-tech-title'}>Languages</h3>
             </div>
             <div className="languages" ref={languages_ref}>
-              <div className={visible.languages_visible ? 'row1 animate-after' : 'row1 animate-before'}>
+              <div className={visible.languages_visible ? 'row1 animate-after-tech' : 'row1 animate-before-tech'}>
                 {languages.slice(0, 4).map((item, index) => (
-                  <div className="icon">
-                    <i key={index} className={`devicon-`+iconParsing(item.toLowerCase())+`-plain ic${index}`}></i>
+                  <div className={`icon ic${index}`}>
+                    <i key={index} className={`devicon-`+iconParsing(item.toLowerCase())+`-plain`}></i>
                     <h4>{item}</h4>
                 </div>
                 ))}
               </div>
-              <div className={visible.languages_visible ? 'row2 animate-after' : 'row2 animate-before'}>
+              <div className={visible.languages_visible ? 'row2 animate-after-tech' : 'row2 animate-before-tech'}>
                 {languages.slice(4, 8).map((item, index) => (
-                  <div className="icon">
-                    <i key={index} className={`devicon-`+iconParsing(item.toLowerCase())+`-plain ic${index}`}></i>
+                  <div className={`icon ic${index}`}>
+                    <i key={index} className={`devicon-`+iconParsing(item.toLowerCase())+`-plain`}></i>
                     <h4>{item}</h4>
                   </div>
                 ))}
               </div>
-              <div className={visible.languages_visible ? 'row3 animate-after' : 'row3 animate-before'}>
+              <div className={visible.languages_visible ? 'row3 animate-after-tech' : 'row3 animate-before-tech'}>
                 {languages.slice(8, languages.length + 1).map((item, index) => (
-                  <div className="icon">
-                    <i key={index} className={`devicon-`+iconParsing(item.toLowerCase())+`-plain ic${index}`}></i>
+                  <div className={`icon ic${index}`}>
+                    <i key={index} className={`devicon-`+iconParsing(item.toLowerCase())+`-plain`}></i>
                     <h4>{item}</h4>
                   </div>
                 ))}             
               </div>
             </div>              
             <div className="tech-title">
-              <h3 className={visible.frameworks_visible ? 'animate-after' : 'animate-before'}>Frameworks</h3>
+              <h3 className={visible.frameworks_visible ? 'animate-after-tech-title' : 'animate-before-tech-title'}>Frameworks</h3>
             </div>
             <div className="frameworks" ref={frameworks_ref}>
-              <div className={visible.frameworks_visible ? 'row1 animate-after' : 'row1 animate-before'}>
+              <div className={visible.frameworks_visible ? 'row1 animate-after-tech' : 'row1 animate-before-tech'}>
                 {frameworks.slice(0, 4).map((item, index) => (
-                  <div className="icon">
-                    <i key={index} className={`devicon-`+iconParsing(item.toLowerCase())+`-plain ic${index}`}></i>
+                  <div className={`icon ic${index}`}>
+                    <i key={index} className={`devicon-`+iconParsing(item.toLowerCase())+`-plain`}></i>
                     <h4>{item}</h4>
                 </div>
                 ))}
               </div>
-              <div className={visible.frameworks_visible ? 'row2 animate-after' : 'row2 animate-before'}>
+              <div className={visible.frameworks_visible ? 'row2 animate-after-tech' : 'row2 animate-before-tech'}>
                 {frameworks.slice(4, frameworks.length + 1).map((item, index) => (
-                  <div className="icon">
-                    <i key={index} className={`devicon-`+iconParsing(item.toLowerCase())+`-plain ic${index}`}></i>
+                  <div className={`icon ic${index}`}>
+                    <i key={index} className={`devicon-`+iconParsing(item.toLowerCase())+`-plain`}></i>
                     <h4>{item}</h4>
                 </div>
                 ))}
               </div>
             </div>
             <div className="tech-title">
-              <h3 className={visible.softwares_visible ? 'animate-after' : 'animate-before'}>Software</h3>
+              <h3 className={visible.softwares_visible ? 'animate-after-tech-title' : 'animate-before-tech-title'}>Software</h3>
             </div>
             <div className="softwares" ref={softwares_ref}>
-              <div className={visible.softwares_visible ? 'row1 animate-after' : 'row1 animate-before'}>
+              <div className={visible.softwares_visible ? 'row1 animate-after-tech' : 'row1 animate-before-tech'}>
                 {softwares.slice(0, 4).map((item, index) => (
-                  <div className="icon">
-                    <i key={index} className={`devicon-`+iconParsing(item.toLowerCase())+`-plain ic${index}`}></i>
+                  <div className={`icon ic${index}`}>
+                    <i key={index} className={`devicon-`+iconParsing(item.toLowerCase())+`-plain`}></i>
                     <h4>{item}</h4>
                   </div>
                 ))}
               </div>
-              <div className={visible.softwares_visible ? 'row2 animate-after' : 'row2 animate-before'}>
+              <div className={visible.softwares_visible ? 'row2 animate-after-tech' : 'row2 animate-before-tech'}>
                 {softwares.slice(4, 8).map((item, index) => (
-                  <div className="icon">
-                    <i key={index} className={`devicon-`+iconParsing(item.toLowerCase())+`-plain ic${index}`}></i>
+                  <div className={`icon ic${index}`}>
+                    <i key={index} className={`devicon-`+iconParsing(item.toLowerCase())+`-plain`}></i>
                     <h4>{item === 'AmazonWebServices' ? "AWS" : item}</h4>
                   </div>
                 ))}
               </div>
-              <div className={visible.softwares_visible ? 'row3 animate-after' : 'row3 animate-before'}>
+              <div className={visible.softwares_visible ? 'row3 animate-after-tech' : 'row3 animate-before-tech'}>
                 {softwares.slice(8, softwares.length + 1).map((item, index) => (
-                  <div className="icon">
-                    <i key={index} className={`devicon-`+iconParsing(item.toLowerCase())+`-plain ic${index}`}></i>
+                  <div className={`icon ic${index}`}>
+                    <i key={index} className={`devicon-`+iconParsing(item.toLowerCase())+`-plain`}></i>
                     <h4>{item}</h4>
                   </div>
                 ))}
