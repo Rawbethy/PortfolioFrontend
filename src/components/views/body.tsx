@@ -280,12 +280,15 @@ export default function Body() {
           </div>
           <div className="imageSlider" ref={images_ref} style={{ height: `${state.width / 2}px` }}>
             <h3 className={visible.images_visible ? 'animate-after' : 'animate-before'}>Photography</h3>
-            {sliderImages.length !== 0 && (<div className={visible.images_visible ? 'animate-after' : 'animate-before'}>
+            {sliderImages.length !== 0 && (
+            <div 
+              className={visible.images_visible ? 'animate-after' : 'animate-before'}
+            >
               {state.height && state.width && (visible.images_visible) && (
                 <SimpleImageSlider
-                  style={{ marginLeft: 'auto', marginRight: 'auto' }}
-                  width={state.width / 1.5}
-                  height={state.width / 2}
+                  style={{ marginLeft: 'auto', marginRight: 'auto'}}
+                  width={window.innerWidth > 1600 ? state.width / 2.5 : state.width / 1.5}
+                  height={window.innerWidth > 1600 ? state.width / 3 : state.width / 2}
                   images={sliderImages}
                   autoPlay={true}
                   autoPlayDelay={3}

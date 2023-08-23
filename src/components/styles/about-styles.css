@@ -113,6 +113,10 @@
     width: 100%;
 }
 
+.imageSlider h3 {
+    padding: 20px;
+}
+
 @media screen and (min-width: 1600px) {
     .icon h4 {
         font-size: 20px;
