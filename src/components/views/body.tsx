@@ -30,7 +30,8 @@ export default function Body() {
   const [state, setState] = useState({
     width: null,
     height: null,
-    images: []
+    images: [],
+    isLoading: true
   })
 
   const [visible, setVisible] = useState({
@@ -68,7 +69,7 @@ export default function Body() {
   const frameworks = ['Express', 'NodeJS', 'NextJS', 'React', 'AngularJS', 'DotNetCore', 'Django', 'Flask', ]
   const softwares = ['Linux', 'GitHub', 'VSCode', 'VisualStudio', 'NPM', 'Jupyter', 'Docker', 'AmazonWebServices', 'Azure', 'Ubuntu', 'Jenkins', 'Jest']
   const imagePrefix = 'https://drive.google.com/uc?export=view&id=';
-  if (state.images) {
+  if (state.images && sliderImages.length === 0) {
     state.images.forEach(element => {
       sliderImages.push({ url: imagePrefix.concat(element.imageID) })
     });
@@ -116,18 +117,22 @@ export default function Body() {
         element.scrollIntoView({ block: 'start', behavior: 'auto' })
       }
     }
+    updateDimensions();
+    window.addEventListener('resize', updateDimensions);
+  }, [state.width,])
+
+  useEffect(() => {
     const getData = async () => {
       try {
         const res = await axios.get('https://api.robert-duque.com:5000/images');
         setState((prevState) => ({ ...prevState, images: res.data }));
+        setState((prevState) => ({...prevState, isLoading: false}))
       } catch (error) {
         alert(error);
       }
     };
     getData();
-    updateDimensions();
-    window.addEventListener('resize', updateDimensions);
-  }, [state.width,])
+  }, [])
 
   useEffect(() => {
     setPage(page);
@@ -286,11 +291,11 @@ export default function Body() {
                   style={{ marginLeft: 'auto', marginRight: 'auto' }}
                   width={state.width / 1.5}
                   height={state.width / 2}
-                  images={sliderImages}
+                  images={state.isLoading === false ? sliderImages : []}
                   autoPlay={true}
-                  autoPlayDelay={3}
+                  autoPlayDelay={4}
                   showNavs={true}
-                  showBullets={true}
+                  showBullets={false}
                 />
               )}
             </div>)}
