@@ -292,7 +292,7 @@ export default function Body() {
             </div>                       
           </div>
         </div>
-        <div className='hobbies' id='hobbies'>
+        {/* <div className='hobbies' id='hobbies'>
           <div className="about-hobbies" ref={about_hobbies_ref}>
             <h3 className={visible.about_hobbies_visible ? 'animate-after-sub' : 'animate-before'}>Hobbies</h3>
           </div>
@@ -313,7 +313,7 @@ export default function Body() {
               )}
             </div>)}
           </div>
-        </div>
+        </div> */}
       </section>
       <section className="projects">
         <div className="projects-title" id='projects' ref={projects_title_ref}>
