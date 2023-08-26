@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef, useContext } from 'react';
+import AWS from 'aws-sdk';
 import { useNavigate } from 'react-router-dom';
 import { PAGEContext } from '../../App'
 import SimpleImageSlider from 'react-simple-image-slider';
@@ -64,16 +65,9 @@ export default function Body() {
     'projects-second': [projects_second_ref, 'projects_second_visible'],
   }
 
-  const sliderImages = [];
   const languages = ['C', 'C++', 'C#', 'Python', 'JavaScript', 'TypeScript', 'Java', 'HTML5', 'CSS3', 'MySQL', 'PHP', 'R']
   const frameworks = ['Express', 'NodeJS', 'NextJS', 'React', 'AngularJS', 'DotNetCore', 'Django', 'Flask', ]
   const softwares = ['Linux', 'GitHub', 'VSCode', 'VisualStudio', 'NPM', 'Jupyter', 'Docker', 'AmazonWebServices', 'Azure', 'Ubuntu', 'Jenkins', 'Jest']
-  const imagePrefix = 'https://drive.google.com/uc?export=view&id=';
-  if (state.images && sliderImages.length === 0) {
-    state.images.forEach(element => {
-      sliderImages.push({ url: imagePrefix.concat(element.imageID) })
-    });
-  }
 
   const iconParsing = (icon: string) => {
     var newString: string = '';
@@ -122,16 +116,35 @@ export default function Body() {
   }, [state.width,])
 
   useEffect(() => {
-    const getData = async () => {
-      try {
-        const res = await axios.get('https://api.robert-duque.com:5000/images');
-        setState((prevState) => ({ ...prevState, images: res.data }));
-        setState((prevState) => ({...prevState, isLoading: false}))
-      } catch (error) {
-        alert(error);
+    // const getData = async () => {
+    //   try {
+    //     const res = await axios.get('https://api.robert-duque.com:5000/images');
+    //     setState((prevState) => ({ ...prevState, images: res.data }));
+    //     setState((prevState) => ({...prevState, isLoading: false}))
+    //   } catch (error) {
+    //     alert(error);
+    //   }
+    // };
+    // getData();
+    const s3 = new AWS.S3({
+      region: process.env.REGION,
+      credentials: {
+        accessKeyId: process.env.S3_ACCES_KEY_ID,
+        secretAccessKey: process.env.S3_SECRET_ACCESS_KEY
+      },
+    })
+    console.log(process.env.S3_BUCKET_NAME)
+    s3.listObjects({Bucket: process.env.S3_BUCKET_NAME, Prefix: 'portfolio/'}, (err, data) => {
+      if(err) {
+        console.error('Error fetching images:', err);
       }
-    };
-    getData();
+      else {
+        const imageKeys = data.Contents.map((obj) => obj.Key);
+        const imageUrls = imageKeys.map((key) => `https://${process.env.S3_BUCKET_NAME}.s3.amazonaws.com/${key}`);
+        setState((prevState) => ({ ...prevState, images: imageUrls, isLoading: false }));
+      }
+    })
+    console.log(state.images);
   }, [])
 
   useEffect(() => {
@@ -285,13 +298,13 @@ export default function Body() {
           </div>
           <div className="imageSlider" ref={images_ref} style={{ height: `${state.width / 2}px` }}>
             <h3 className={visible.images_visible ? 'animate-after' : 'animate-before'}>Photography</h3>
-            {sliderImages.length !== 0 && (<div className={visible.images_visible ? 'animate-after' : 'animate-before'}>
+            {state.images.length !== 0 && (<div className={visible.images_visible ? 'animate-after' : 'animate-before'}>
               {state.height && state.width && (visible.images_visible) && (
                 <SimpleImageSlider
                   style={{ marginLeft: 'auto', marginRight: 'auto' }}
                   width={state.width / 1.5}
                   height={state.width / 2}
-                  images={state.isLoading === false ? sliderImages : []}
+                  images={state.isLoading === false ? state.images : []}
                   autoPlay={true}
                   autoPlayDelay={4}
                   showNavs={true}
