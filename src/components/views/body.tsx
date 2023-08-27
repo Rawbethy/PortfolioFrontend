@@ -117,7 +117,7 @@ export default function Body() {
     const s3 = new AWS.S3({
       region: process.env.REACT_APP_REGION,
       credentials: {
-        accessKeyId: process.env.REACT_APP_S3_ACCES_KEY_ID,
+        accessKeyId: process.env.REACT_APP_S3_ACCESS_KEY_ID,
         secretAccessKey: process.env.REACT_APP_S3_SECRET_ACCESS_KEY
       },
     })
