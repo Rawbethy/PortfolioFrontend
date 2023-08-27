@@ -3,14 +3,12 @@ import AWS from 'aws-sdk';
 import { useNavigate } from 'react-router-dom';
 import { PAGEContext } from '../../App'
 import SimpleImageSlider from 'react-simple-image-slider';
-import axios from 'axios';
 import Desc from '../../Utils/Descriptions';
 import '../styles/general-styles.css'
 import '../styles/projects-styles.css';
 import '../styles/about-styles.css';
 
 export default function Body() {
-
 
   const navigate = useNavigate();
   const { page, setPage, prevPosition, setPrevPosition } = useContext(PAGEContext)
@@ -116,35 +114,23 @@ export default function Body() {
   }, [state.width,])
 
   useEffect(() => {
-    // const getData = async () => {
-    //   try {
-    //     const res = await axios.get('https://api.robert-duque.com:5000/images');
-    //     setState((prevState) => ({ ...prevState, images: res.data }));
-    //     setState((prevState) => ({...prevState, isLoading: false}))
-    //   } catch (error) {
-    //     alert(error);
-    //   }
-    // };
-    // getData();
     const s3 = new AWS.S3({
-      region: process.env.REGION,
+      region: process.env.REACT_APP_REGION,
       credentials: {
-        accessKeyId: process.env.S3_ACCES_KEY_ID,
-        secretAccessKey: process.env.S3_SECRET_ACCESS_KEY
+        accessKeyId: process.env.REACT_APP_S3_ACCES_KEY_ID,
+        secretAccessKey: process.env.REACT_APP_S3_SECRET_ACCESS_KEY
       },
     })
-    console.log(process.env.S3_BUCKET_NAME)
-    s3.listObjects({Bucket: process.env.S3_BUCKET_NAME, Prefix: 'portfolio/'}, (err, data) => {
+    s3.listObjects({Bucket: process.env.REACT_APP_S3_BUCKET_NAME, Prefix: 'Portfolio/'}, (err, data) => {
       if(err) {
         console.error('Error fetching images:', err);
       }
       else {
         const imageKeys = data.Contents.map((obj) => obj.Key);
-        const imageUrls = imageKeys.map((key) => `https://${process.env.S3_BUCKET_NAME}.s3.amazonaws.com/${key}`);
+        const imageUrls = imageKeys.map((key) => `https://${process.env.REACT_APP_S3_BUCKET_NAME}.s3.amazonaws.com/${key}`);
         setState((prevState) => ({ ...prevState, images: imageUrls, isLoading: false }));
       }
     })
-    console.log(state.images);
   }, [])
 
   useEffect(() => {
@@ -183,6 +169,13 @@ export default function Body() {
     };
   }, [ref])
 
+  useEffect(() => {
+    setState((prevState) => ({
+      ...prevState,
+      images: state.images
+    }))
+  }, [state.images])
+
   return (
     <div className="body">
       <section className="home">
@@ -217,24 +210,24 @@ export default function Body() {
             <div className="languages" ref={languages_ref}>
               <div className={visible.languages_visible ? 'row1 animate-after-tech' : 'row1 animate-before-tech'}>
                 {languages.slice(0, 4).map((item, index) => (
-                  <div className={`icon ic${index}`}>
-                    <i key={index} className={`devicon-`+iconParsing(item.toLowerCase())+`-plain`}></i>
+                  <div key={index} className={`icon ic${index}`}>
+                    <i className={`devicon-`+iconParsing(item.toLowerCase())+`-plain`}></i>
                     <h4>{item}</h4>
                 </div>
                 ))}
               </div>
               <div className={visible.languages_visible ? 'row2 animate-after-tech' : 'row2 animate-before-tech'}>
                 {languages.slice(4, 8).map((item, index) => (
-                  <div className={`icon ic${index}`}>
-                    <i key={index} className={`devicon-`+iconParsing(item.toLowerCase())+`-plain`}></i>
+                  <div key={index} className={`icon ic${index}`}>
+                    <i className={`devicon-`+iconParsing(item.toLowerCase())+`-plain`}></i>
                     <h4>{item}</h4>
                   </div>
                 ))}
               </div>
               <div className={visible.languages_visible ? 'row3 animate-after-tech' : 'row3 animate-before-tech'}>
                 {languages.slice(8, languages.length + 1).map((item, index) => (
-                  <div className={`icon ic${index}`}>
-                    <i key={index} className={`devicon-`+iconParsing(item.toLowerCase())+`-plain`}></i>
+                  <div key={index} className={`icon ic${index}`}>
+                    <i className={`devicon-`+iconParsing(item.toLowerCase())+`-plain`}></i>
                     <h4>{item}</h4>
                   </div>
                 ))}             
@@ -246,16 +239,16 @@ export default function Body() {
             <div className="frameworks" ref={frameworks_ref}>
               <div className={visible.frameworks_visible ? 'row1 animate-after-tech' : 'row1 animate-before-tech'}>
                 {frameworks.slice(0, 4).map((item, index) => (
-                  <div className={`icon ic${index}`}>
-                    <i key={index} className={`devicon-`+iconParsing(item.toLowerCase())+`-plain`}></i>
+                  <div key={index} className={`icon ic${index}`}>
+                    <i className={`devicon-`+iconParsing(item.toLowerCase())+`-plain`}></i>
                     <h4>{item}</h4>
                 </div>
                 ))}
               </div>
               <div className={visible.frameworks_visible ? 'row2 animate-after-tech' : 'row2 animate-before-tech'}>
                 {frameworks.slice(4, frameworks.length + 1).map((item, index) => (
-                  <div className={`icon ic${index}`}>
-                    <i key={index} className={`devicon-`+iconParsing(item.toLowerCase())+`-plain`}></i>
+                  <div key={index} className={`icon ic${index}`}>
+                    <i className={`devicon-`+iconParsing(item.toLowerCase())+`-plain`}></i>
                     <h4>{item}</h4>
                 </div>
                 ))}
@@ -267,24 +260,24 @@ export default function Body() {
             <div className="softwares" ref={softwares_ref}>
               <div className={visible.softwares_visible ? 'row1 animate-after-tech' : 'row1 animate-before-tech'}>
                 {softwares.slice(0, 4).map((item, index) => (
-                  <div className={`icon ic${index}`}>
-                    <i key={index} className={`devicon-`+iconParsing(item.toLowerCase())+`-plain`}></i>
+                  <div key={index} className={`icon ic${index}`}>
+                    <i className={`devicon-`+iconParsing(item.toLowerCase())+`-plain`}></i>
                     <h4>{item}</h4>
                   </div>
                 ))}
               </div>
               <div className={visible.softwares_visible ? 'row2 animate-after-tech' : 'row2 animate-before-tech'}>
                 {softwares.slice(4, 8).map((item, index) => (
-                  <div className={`icon ic${index}`}>
-                    <i key={index} className={`devicon-`+iconParsing(item.toLowerCase())+`-plain`}></i>
+                  <div key={index} className={`icon ic${index}`}>
+                    <i className={`devicon-`+iconParsing(item.toLowerCase())+`-plain`}></i>
                     <h4>{item === 'AmazonWebServices' ? "AWS" : item}</h4>
                   </div>
                 ))}
               </div>
               <div className={visible.softwares_visible ? 'row3 animate-after-tech' : 'row3 animate-before-tech'}>
                 {softwares.slice(8, softwares.length + 1).map((item, index) => (
-                  <div className={`icon ic${index}`}>
-                    <i key={index} className={`devicon-`+iconParsing(item.toLowerCase())+`-plain`}></i>
+                  <div key={index} className={`icon ic${index}`}>
+                    <i className={`devicon-`+iconParsing(item.toLowerCase())+`-plain`}></i>
                     <h4>{item}</h4>
                   </div>
                 ))}
@@ -292,7 +285,7 @@ export default function Body() {
             </div>                       
           </div>
         </div>
-        {/* <div className='hobbies' id='hobbies'>
+        <div className='hobbies' id='hobbies'>
           <div className="about-hobbies" ref={about_hobbies_ref}>
             <h3 className={visible.about_hobbies_visible ? 'animate-after-sub' : 'animate-before'}>Hobbies</h3>
           </div>
@@ -304,7 +297,7 @@ export default function Body() {
                   style={{ marginLeft: 'auto', marginRight: 'auto' }}
                   width={state.width / 1.5}
                   height={state.width / 2}
-                  images={state.isLoading === false ? sliderImages : []}
+                  images={state.isLoading === false ? state.images : []}
                   autoPlay={true}
                   autoPlayDelay={4}
                   showNavs={true}
@@ -313,7 +306,7 @@ export default function Body() {
               )}
             </div>)}
           </div>
-        </div> */}
+        </div>
       </section>
       <section className="projects">
         <div className="projects-title" id='projects' ref={projects_title_ref}>
