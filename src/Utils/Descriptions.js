@@ -1,6 +1,6 @@
 const Desc = {
     'AboutMe': {   
-        'Who': 'My name is Robert and I am from Houston, Texas. I am recent graduate from the University of Houston with a Bachelors of Science in Computer Science and a Minor in Mathetmatics. My relevant coursework GPA for Computer Science is a 3.5 and I have an affinity for learning new technologies and meeting like minded individuals.',
+        'Who': 'My name is Robert and I am from Houston, Texas. I am a recent graduate from the University of Houston with a Bachelors of Science in Computer Science and a Minor in Mathetmatics. My relevant coursework GPA for Computer Science is a 3.5 and I have an affinity for learning new technologies and meeting like minded individuals.',
     },
     'Earthquake': {
         'Intro': 'The Early Earthquake Detection/Warning system is an application made in Python that utilizes a dataset from Kaggle which contains geospatial data on earthquakes in the contiguous United States which include latitude/longitude, date and time, magnitude, and depth of origination.',
