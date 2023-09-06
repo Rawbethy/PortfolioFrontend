@@ -142,9 +142,6 @@ export default function Body() {
     else if (page === 'Python-Interpreter') {
       navigate('/Python-Interpreter')
     }
-    else if (page === 'Flight-Comparison') {
-      navigate('/Flight-Comparison')
-    }
     else if (page === 'E-Commerce') {
       navigate('/E-Commerce')
     }
@@ -319,7 +316,7 @@ export default function Body() {
                 <div className={visible.projects_first_visible ? 'projects-header animate-after' : 'projects-header animate-before'} >
                   <h2>Flight-Comparison</h2>
                 </div>
-                <div className={visible.projects_first_visible ? 'projects-content animate-after' : 'projects-content animate-before'} role='button' onClick={() => { setPage('Flight-Comparison') }}>
+                <div className={visible.projects_first_visible ? 'projects-content animate-after' : 'projects-content animate-before'} role='button' onClick={() => {window.open('https://flight.robert-duque.com/', '_blank')}}>
                   <img src={require('../../Utils/images/Airplane.png')} alt="" />
                   <span className=''>View</span>
                 </div>
@@ -340,7 +337,6 @@ export default function Body() {
           </div>
 
           <div className="second-row">
-
             <div className="projects-second" ref={projects_second_ref}>
               <div className="projects-card">
                 <div className={visible.projects_second_visible ? 'projects-header animate-after' : 'projects-header animate-before'} >

@@ -8,7 +8,6 @@ import Body from './components/views/body';
 import Earthquakes from './components/projects/Earthquake'
 import Python from './components/projects/Python-Interpreter'
 import ECommerce from './components/projects/E-Commerce'
-import FlightComparison from './components/projects/Flight-Comparison'
 import Footer from './components/views/footer';
 
 type PAGE = {
@@ -38,7 +37,6 @@ export default function App() {
             <Route path='/' element={<Body />}></Route>
             <Route path='/Earthquake-Detection' element={<Earthquakes/>}></Route>
             <Route path='/Python-Interpreter' element={<Python/>}></Route>
-            <Route path='/Flight-Comparison' element={<FlightComparison/>}></Route>
             <Route path='/E-Commerce' element={<ECommerce/>}></Route>
           </Routes>
           <Footer />
